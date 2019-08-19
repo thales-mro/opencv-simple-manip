@@ -2,26 +2,32 @@ image: adnrv/opencv
 
 # Some variables to make your CI DRY
 variables:
-  FILE: "src/main.py"
+  FILE: "bin/main.py"
 
 before_script:
   # Execute any scripts here before running your code
 
 stages:
+  - build
   - exec
   - report
+
+build:
+  stage: build
+  script:
+    - make build
+  artifacts:
+    paths:
+      - $FILE
 
 # This stage executes our program (previously compiled)
 exec:
   stage: exec
   script:
     # Note that instead of the makefile you can just call your executable here
-    - python $FILE
+    - make exec
   artifacts:
     paths:
-      - input/
-      - src/
-      - report/
       - o-2-a-0.jpg
       - o-2-b-0.jpg
       - o-2-c-0.jpg
