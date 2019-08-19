@@ -33,7 +33,6 @@ report:
   stage: report
   script:
     - ls
-    - ls output/
     - cd report
     - latexmk -pdf -pdflatex="pdflatex --shell-escape %O %S" report
     # move the file to the root folder
