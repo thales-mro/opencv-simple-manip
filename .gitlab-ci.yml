@@ -18,7 +18,10 @@ exec:
     - python $FILE
   artifacts:
     paths:
-      - test.jpg
+      - input/
+      - src/
+      - report/
+      - output/
 
 
 # This stage builds your report too

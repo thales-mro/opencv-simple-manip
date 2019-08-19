@@ -8,4 +8,4 @@ image_original = cv2.imread('input/i-1-0.jpg')
 print(len(image_original))
 
 # Save jpg
-cv2.imwrite('test.jpg', image_original, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+cv2.imwrite('output/test.jpg', image_original, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
