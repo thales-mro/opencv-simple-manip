@@ -21,7 +21,11 @@ exec:
       - input/
       - src/
       - report/
-      - test.jpg
+      - o-2-a-0.jpg
+      - o-2-b-0.jpg
+      - o-2-c-0.jpg
+      - o-5-a-0.jpg
+      - o-5-b-0.jpg
 
 
 # This stage builds your report too
