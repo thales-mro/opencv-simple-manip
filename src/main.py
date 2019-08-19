@@ -12,7 +12,7 @@ def swap(image_original):
     image_final = cv2.cvtColor(image_final, cv2.COLOR_BGR2RGB)
 
     # Save jpg
-    cv2.imwrite('o-2-a-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    cv2.imwrite('output/o-2-a-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
     
     
 def monochromeGreen(image_original):
@@ -22,7 +22,7 @@ def monochromeGreen(image_original):
     image_final[:,:,2] = 0
     
       # Save jpg
-    cv2.imwrite('o-2-b-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    cv2.imwrite('output/o-2-b-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
     
     
 def monochromeRed(image_original):
@@ -32,7 +32,7 @@ def monochromeRed(image_original):
     image_final[:,:,1] = 0
     
     # Save jpg
-    cv2.imwrite('o-2-c-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    cv2.imwrite('output/o-2-c-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 
 ###### 3. Replacements of pixels
@@ -62,7 +62,7 @@ def noiseGreen(image_original):
     image_final[:,:,1] = image_green[:,:,1]
 
     # Save jpg
-    cv2.imwrite('o-5-a-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    cv2.imwrite('output/o-5-a-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 
 def noiseBlue(image_original):
@@ -84,7 +84,7 @@ def noiseBlue(image_original):
     image_final[:,:,0] = image_green[:,:,0]
 
     # Save jpg
-    cv2.imwrite('o-5-b-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    cv2.imwrite('output/o-5-b-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 
 
