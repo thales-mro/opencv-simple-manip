@@ -21,7 +21,7 @@ exec:
       - input/
       - src/
       - report/
-      - output/test.jpg
+      - test.jpg
 
 
 # This stage builds your report too
