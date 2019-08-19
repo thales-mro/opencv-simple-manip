@@ -1,0 +1,47 @@
+image: adnrv/opencv
+
+# Some variables to make your CI DRY
+variables:
+  FILE: "src/main.py"
+
+before_script:
+  # Execute any scripts here before running your code
+
+stages:
+  - exec
+
+# This stage compiles the files
+build:
+  stage: build
+  script:
+    - make
+  # And we expose the compiled program: "kmeans" (check the definition of the variable up there)
+  artifacts:
+    paths:
+      - $FILE
+
+# This stage executes our program (previously compiled)
+exec:
+  stage: exec
+  script:
+    # Note that instead of the makefile you can just call your executable here
+    - python $FILE
+  artifacts:
+    paths:
+      # We need to publish our results so others (the professor and assistants) can check them
+      # See the code to identify the name (this file is made by you as a result of executing the 'kmeans' program)
+      - clusters.png
+
+
+# This stage builds your report too
+#report:
+#  image: adnrv/texlive:full
+#  stage: build
+#  script:
+#    - cd report
+#    - latexmk -pdf -pdflatex="pdflatex --shell-escape %O %S" report
+#    # move the file to the root folder
+#    - mv report.pdf ../
+#  artifacts:
+#    paths:
+#      - report.pdf
