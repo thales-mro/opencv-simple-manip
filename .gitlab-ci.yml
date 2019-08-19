@@ -28,8 +28,6 @@ exec:
       - o-5-a-0.jpg
       - o-5-b-0.jpg
 
-
-This stage builds your report too
 report:
   image: adnrv/texlive:full
   stage: report
