@@ -2,37 +2,30 @@ image: adnrv/opencv
 
 # Some variables to make your CI DRY
 variables:
-  FILE: "bin/main.py"
+  FILE: "src/main.py"
 
 before_script:
   # Execute any scripts here before running your code
 
 stages:
-  - build
   - exec
-
-build:
-  stage: build
-  script:
-    - make build
-  artifacts:
-    paths:
-      - $FILE
-
 
 # This stage executes our program (previously compiled)
 exec:
   stage: exec
   script:
     # Note that instead of the makefile you can just call your executable here
-    - make exec
+    - python $FILE
   artifacts:
     paths:
-      # We need to publish our results so others (the professor and assistants) can check them
-      # See the code to identify the name (this file is made by you as a result of executing the 'kmeans' program)
-      - clusters.png
-  dependencies:
-      - build
+      - input/
+      - src/
+      - report/
+      - o-2-a-0.jpg
+      - o-2-b-0.jpg
+      - o-2-c-0.jpg
+      - o-5-a-0.jpg
+      - o-5-b-0.jpg
 
 
 # This stage builds your report too
