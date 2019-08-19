@@ -10,16 +10,6 @@ before_script:
 stages:
   - exec
 
-# This stage compiles the files
-build:
-  stage: build
-  script:
-    - make
-  # And we expose the compiled program: "kmeans" (check the definition of the variable up there)
-  artifacts:
-    paths:
-      - $FILE
-
 # This stage executes our program (previously compiled)
 exec:
   stage: exec
