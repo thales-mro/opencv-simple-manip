@@ -28,11 +28,11 @@ exec:
     - make exec
   artifacts:
     paths:
-      - o-2-a-0.jpg
-      - o-2-b-0.jpg
-      - o-2-c-0.jpg
-      - o-5-a-0.jpg
-      - o-5-b-0.jpg
+      - output/o-2-a-0.jpg
+      - output/o-2-b-0.jpg
+      - output/o-2-c-0.jpg
+      - output/o-5-a-0.jpg
+      - output/o-5-b-0.jpg
 
 report:
   image: adnrv/texlive:full
