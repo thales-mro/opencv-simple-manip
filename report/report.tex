@@ -34,6 +34,64 @@
 
   actions and work goes here.
   
+  
+  
+  \subsection{Exercise 2}
+  
+  The first question asked to swap the blue and red channels in the original image. The result can be seen in Figure~\ref{fig:o-2-a-0}.
+  
+  \begin{figure}[!h]
+    \centering
+    \includegraphics{../output/o-2-a-0.jpg}
+    \caption{Output image after swapping the blue and red channels.}
+    \label{fig:o-2-a-0}
+  \end{figure}
+  
+  In the second question, we should generate a green monochromatic image. This process was executed by selecting the green channel in the original image. The result is presented in Figure~\ref{fig:o-2-b-0}.
+  
+  \begin{figure}[!h]
+    \centering
+    \includegraphics{../output/o-2-b-0.jpg}
+    \caption{Output image after selecting the green channel.}
+    \label{fig:o-2-b-0}
+  \end{figure}
+  
+  In the third question, we should generate a red monochromatic image. This process was executed by selecting the red channel in the original image. The result generated is shown in Figure~\ref{fig:o-2-c-0}.
+  
+  \begin{figure}[!h]
+    \centering
+    \includegraphics{../output/o-2-c-0.jpg}
+    \caption{Output image after selecting the red channel.}
+    \label{fig:o-2-c-0}
+  \end{figure}
+  
+  The green monochrome image looks better because it holds more information than the red one, which has many areas in dark. The computer vision algorithm should perform better in the green image because the saliency map can be identified easily and the feature description can be more useful.
+  
+  
+  
+  \subsection{Exercise 5}
+  
+  In this exercise, we should take the original colored image and add gaussian noise to the pixels in the green channel. The sigma was defined as 20. The noise increase as the sigma increased. The image seems corrupted as shown in Figure~\ref{fig:o-5-a-0}.
+  
+  \begin{figure}[!h]
+    \centering
+    \includegraphics{../output/o-5-a-0.jpg}
+    \caption{Output image after adding noise to the green channel.}
+    \label{fig:o-5-a-0}
+  \end{figure}
+  
+  In the second question, we should the the same gaussian noise the blue channel. The result is shown in Figure~\ref{fig:o-5-b-0}.
+  
+   \begin{figure}[!h]
+    \centering
+    \includegraphics{../output/o-5-b-0.jpg}
+    \caption{Output image after adding noise to the blue channel.}
+    \label{fig:o-5-b-0}
+  \end{figure}
+  
+  The image in which the blue channel received the noise looks better because the blue channel holds less information in terms of saliency and high energy regions than the other channels. So the added noise produced a little impact on the image's content.
+  
+  
   \section{Conclusion}
   
   You conclude your work here.
