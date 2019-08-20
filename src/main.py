@@ -23,6 +23,8 @@ def monochromeGreen(image_original):
     
       # Save jpg
     cv2.imwrite('output/o-2-b-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+
+    return image_final
     
     
 def monochromeRed(image_original):
@@ -34,8 +36,23 @@ def monochromeRed(image_original):
     # Save jpg
     cv2.imwrite('output/o-2-c-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
+    return image_final
+
 
 ###### 3. Replacements of pixels
+def pixelReplacement(image_original, monocA, monocB):
+
+    image_final = image_original.copy()
+
+    heightA, widthA, _ = monocA.shape 
+    middleA = monocA[(heightA//2)-50:(heightA//2)+50,(widthA//2)-50:(widthA//2)+50]
+
+    heightB, widthB, _ = monocB.shape
+    monocB[(heightB//2)-50:(heightB//2)+50,(widthB//2)-50:(widthB//2)+50] = middleA
+    cv2.imwrite('output/o-3-0.jpg', monocB, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+
+    image_final[:,:,1] = monocB[:,:,1]
+    cv2.imwrite('output/o-3-1.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 
 ###### 4. Arithmetic and geometric operations
@@ -92,7 +109,8 @@ def noiseBlue(image_original):
 image_original = cv2.imread('input/i-1-0.jpg')
 
 swap(image_original)
-monochromeGreen(image_original)
-monochromeRed(image_original)
+mg = monochromeGreen(image_original)
+mr = monochromeRed(image_original)
+pixelReplacement(image_original, mr, mg)
 noiseGreen(image_original)
 noiseBlue(image_original)
