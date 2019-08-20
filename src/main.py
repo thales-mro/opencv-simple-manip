@@ -48,9 +48,8 @@ def pixelReplacement(image_original, monocA, monocB):
     middleA = monocA[(heightA//2)-50:(heightA//2)+50,(widthA//2)-50:(widthA//2)+50]
 
     heightB, widthB, _ = monocB.shape
-    output1 = monocB.copy()
-    output1[(heightB//2)-50:(heightB//2)+50,(widthB//2)-50:(widthB//2)+50] = middleA
-    cv2.imwrite('output/o-3-0.jpg', output1, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    monocB[(heightB//2)-50:(heightB//2)+50,(widthB//2)-50:(widthB//2)+50] = middleA
+    cv2.imwrite('output/o-3-0.jpg', monocB, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
     image_final[:,:,2] = monocB[:,:,2]
     cv2.imwrite('output/o-3-1.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
