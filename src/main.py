@@ -64,19 +64,12 @@ def noiseGreen(image_original):
     
     image_final = image_original.copy()
     
-    image_green = image_original.copy()
-    image_green[:,:,0] = 0
-    image_green[:,:,2] = 0
-    
-    row,col,_= image_green.shape
+    row,col,_= image_final.shape
     mean = 10
     sigma = 20
-    gauss = np.random.normal(mean,sigma,(row,col,1))
-    gauss = gauss.reshape(row,col,1)
-    image_green = image_green + gauss
-    
-    # replace the green channel
-    image_final[:,:,1] = image_green[:,:,1]
+    gauss = np.random.normal(mean,sigma,(row,col))
+    gauss = gauss.reshape(row,col)
+    image_final[:,:,1] = image_final[:,:,1] + gauss
 
     # Save jpg
     cv2.imwrite('output/o-5-a-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
@@ -86,20 +79,13 @@ def noiseBlue(image_original):
     
     image_final = image_original.copy()
     
-    image_green = image_original.copy()
-    image_green[:,:,1] = 0
-    image_green[:,:,2] = 0
-    
-    row,col,_= image_green.shape
+    row,col,_= image_final.shape
     mean = 10
     sigma = 20
-    gauss = np.random.normal(mean,sigma,(row,col,1))
-    gauss = gauss.reshape(row,col,1)
-    image_green = image_green + gauss
+    gauss = np.random.normal(mean,sigma,(row,col))
+    gauss = gauss.reshape(row,col)
+    image_final[:,:,0] = image_final[:,:,0] + gauss
     
-    # replace the blue channel
-    image_final[:,:,0] = image_green[:,:,0]
-
     # Save jpg
     cv2.imwrite('output/o-5-b-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
