@@ -42,9 +42,9 @@ def monochromeRed(image_original):
 ###### 3. Replacements of pixels
 def pixelReplacement(monocA, monocB):
     heightA, widthA, chanA = monocA.shape 
-    middleA = monocA[(heightA/2)-50:(heightA/2)+50,(widthA/2)-50:(widthA/2)+50]
+    middleA = monocA[(heightA//2)-50:(heightA//2)+50,(widthA//2)-50:(widthA//2)+50]
     heightB, widthB, chanB = monocB.shape
-    monocB[(heightB/2)-50:(heightB/2)+50,(widthB/2)-50:(widthB/2)+50]
+    monocB[(heightB//2)-50:(heightB//2)+50,(widthB//2)-50:(widthB//2)+50]
     cv2.imwrite('output/o-3-0.jpg', monocB, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 
