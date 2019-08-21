@@ -102,8 +102,9 @@
 
   Then, we used mean and standard deviation to normalize the values, as suggested on the answer and implemented in the following code:
   \begin{lstlisting}     
-    green_channel = ((green_channel - mean)/stdev*10).astype(int)
-    image[:,:,1] = image[:,:,1] + green_channel    
+    green_channel=((green_channel - mean)
+                    /stdev*10).astype(int)
+    image[:,:,1]=image[:,:,1] + green_channel    
   \end{lstlisting}  
   We can see the result on Figure \ref{fig:o-4-b-0}. Seems like the image got a beter contrast, as the values got normalized. The higher-value pixels got more bright (255), and the lower-value got more dark (0).
   \begin{figure}[!h]
