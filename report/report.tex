@@ -3,14 +3,17 @@
 % Your packages go here
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
 
 \markboth{MC949/MO446 Computer Vision}{}
 
 \begin{document}
   \title{Homework 0}
-  \author{Leonardo Rezende, Thales Oliveira (RA 148051) and Iury Cleveston (RA 230216)
-    \thanks{-, t148051@dac.unicamp.br, iurycl@gmail.com}
+  \author{Iury Cleveston (RA 230216), Leonardo Rezende (RA 262953) and Thales Oliveira (RA 148051)
+    \thanks{iurycl@gmail.com, l262953@dac.unicamp.br, t148051@dac.unicamp.br}
   }
+
   \maketitle
   
   \begin{abstract}
@@ -67,7 +70,7 @@
   For this exercise, the green monochrome image from previous exercise (labed here image A), is manipulated with the red monochrome image from the same problem (labed here as B). The figure \ref{fig:o-3-0} represents image B, with the 100x100 central pixels from image A.  
   \begin{figure}[!h]
     \centering
-    \includegraphics{../output/o-3-0.jpg}
+    \includegraphics[width=0.8\hsize]{../output/o-3-0.jpg}
     \caption{Image B manipulated with image A specific region}
     \label{fig:o-3-0}
   \end{figure}
@@ -75,10 +78,58 @@
   
   \begin{figure}[!h]
     \centering
-    \includegraphics{../output/o-3-1.jpg}
+    \includegraphics[width=0.8\hsize]{../output/o-3-1.jpg}
     \caption{Original image with red channel from image B}
     \label{fig:o-3-1}
   \end{figure}
+
+\subsection{Excercise 4}
+  Here we aply some arithmetic and geometric operations to green monochrome to extract some important values and see what they can change at the image.
+  These values are:
+  \begin{itemize}
+    \item{Max value: 238}
+    \item{Min value: 0}
+    \item{Mean value: 138.79}
+    \item{Standard deviation: 38.07}
+  \end{itemize}
+
+
+  To extract mean and standard values, we used this opencv function:
+  \begin{lstlisting}     
+    green_channel = image[:,:,1]
+    mean, stdev = cv2.meanStdDev(green_channel)
+  \end{lstlisting}  
+
+  Then, we used mean and standard deviation to normalize the values, as suggested on the answer and implemented in the following code:
+  \begin{lstlisting}     
+    green_channel=((green_channel - mean)
+                    /stdev*10).astype(int)
+    image[:,:,1]=image[:,:,1] + green_channel    
+  \end{lstlisting}  
+  We can see the result on Figure \ref{fig:o-4-b-0}. Seems like the image got a beter contrast, as the values got normalized. The higher-value pixels got more bright (255), and the lower-value got more dark (0).
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\hsize]{../output/o-4-b-0.jpg}
+    \caption{Output image after normalization.}
+    \label{fig:o-4-b-0}
+  \end{figure}
+
+  Then, we shifted the image two pixels to the left, using a mask and opencv's warpAffine. The result can be seen at Figure \ref{fig:0-4-c-0}. After that, we took the original green monochrome and substracted Figure \ref{fig:0-4-c-0} from it, leading to Figure \ref{fig:0-4-c-1}. Pixels near to each other that had close values between them resulted in a very low value (sometimes negative). By the other hand, when the values was too different and the shifted one was darker than the original, the resulting pixel was bright. That indicates the borthers on the image, espacially those left-to-right. 
+
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\hsize]{../output/o-4-c-0.jpg}
+    \caption{Output image after normalization.}
+    \label{fig:0-4-c-0}
+  \end{figure}
+
+  \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.8\hsize]{../output/o-4-c-1.jpg}
+    \caption{Output image after normalization.}
+    \label{fig:0-4-c-1}
+  \end{figure}
+
 
   \subsection{Exercise 5}
   
