@@ -9,3 +9,8 @@ __pycache__/
 
 # Report temporary file
 *.pdf
+
+#vim temprary files
+*.swp
+*.swo
+

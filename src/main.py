@@ -56,6 +56,29 @@ def pixelReplacement(image_original, monocA, monocB):
 
 
 ###### 4. Arithmetic and geometric operations
+def normalizeValues(image_original):
+	
+	image_final = image_original.copy()
+	
+	mean, stdev = cv2.meanStdDev(image_final[:,:,1])	
+	image_final[:,:,1] = ((image_final[:,:,1] - mean)/stdev*10).astype(int)
+	image_final = image_final + image_original
+	
+	cv2.imwrite('output/o-4-b-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+
+
+def shiftToLeft(image_original):
+	image_final = image_original.copy()
+
+	r,c,_ = image_final.shape	
+	m = np.float32([[1,0,-2],[0,1,0]]) #shift two pixels to left (x-axis) and zero in y-axis 
+	image_final = cv2.warpAffine(image_final, m, (c,r))
+
+	cv2.imwrite('output/o-4-c-0.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+
+	image_final = image_original.astype(np.int16) - image_final
+
+	cv2.imwrite('output/o-4-c-1.jpg', image_final, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
 
 
 ###### 5. Noise
@@ -97,6 +120,8 @@ image_original = cv2.imread('input/i-1-0.jpg')
 swap(image_original)
 mg = monochromeGreen(image_original)
 mr = monochromeRed(image_original)
-pixelReplacement(image_original, mg, mr)
+pixelReplacement(image_original, mg.copy(), mr.copy())
+normalizeValues(mg)
+shiftToLeft(mg)
 noiseGreen(image_original)
 noiseBlue(image_original)
