@@ -1,0 +1,16 @@
+### Python
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+/bin/*
+/output/*
+
+# Report temporary file
+*.pdf
+
+#vim temprary files
+*.swp
+*.swo
+
