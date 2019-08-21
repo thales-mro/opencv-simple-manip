@@ -31,17 +31,6 @@
     \caption{Image input used for exercises 2 to 5}
     \label{fig:i-1-0}
   \end{figure}
-
-  \subsection{Exercise 3}
-  For this exercise, the img-red from previous exercise (labed here image A), is manipulated with img-green from the same problem (labed here as B). The figure \ref{fig:o-3-0} represents image B, with the 100x100 central pixels from image A.  
-  \begin{figure}[!h]
-    \centering
-    \includegraphics{../output/o-3-0.jpg}
-    \caption{Image input used for exercises 2 to 5}
-    \label{fig:o-3-0}
-  \end{figure}
-  
-  
   
   \subsection{Exercise 2}
   
@@ -74,8 +63,23 @@
   
   The green monochrome image looks better because it holds more information than the red one, which has many areas in dark. The computer vision algorithm should perform better in the green image because the saliency map can be identified easily and the feature description can be more useful.
   
+  \subsection{Exercise 3}
+  For this exercise, the green monochrome image from previous exercise (labed here image A), is manipulated with the red monochrome image from the same problem (labed here as B). The figure \ref{fig:o-3-0} represents image B, with the 100x100 central pixels from image A.  
+  \begin{figure}[!h]
+    \centering
+    \includegraphics{../output/o-3-0.jpg}
+    \caption{Image B manipulated with image A specific region}
+    \label{fig:o-3-0}
+  \end{figure}
+  Next, the red channel from image B (modified) is replaced in the original image. The figure \ref{fig:o-3-1} represents this operation. Inspecting the figure, we can see that in the 100x100 central pixels of the image, there is no presence of the red color, as the red channel has zero values in that region, creating a "greenish" appearance for those pixels. 
   
-  
+  \begin{figure}[!h]
+    \centering
+    \includegraphics{../output/o-3-1.jpg}
+    \caption{Original image with red channel from image B}
+    \label{fig:o-3-0}
+  \end{figure}
+
   \subsection{Exercise 5}
   
   In this exercise, we should take the original colored image and add gaussian noise to the pixels in the green channel. The sigma was defined as 20. The noise increase as the sigma increased. The image seems corrupted as shown in Figure~\ref{fig:o-5-a-0}.
@@ -101,6 +105,6 @@
   
   \section{Conclusion}
   
-  You conclude your work here.
-  
+
+
 \end{document}
